@@ -279,3 +279,85 @@ footer p:last-child {
     color: #555;
     line-height: 1.6;
 }
+
+/*Tabla*/
+.table-modern {
+  width: 100%;
+  border-collapse: collapse;
+  background: #111111;
+  color: #e5e5e5;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid #222;
+  box-shadow: 0 0 20px rgba(0, 255, 170, 0.1);
+}
+
+.table-modern thead {
+  background: linear-gradient(90deg, #00ffaa33, #00ccff33);
+}
+
+.table-modern th {
+  padding: 14px;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #222;
+  color: #00ffaa;
+}
+
+.table-modern td {
+  padding: 12px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.table-modern tr:hover {
+  background: #1a1a1a;
+  transition: 0.2s ease;
+}
+
+.table-modern tr:last-child td {
+  border-bottom: none;
+}
+
+.table-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-action {
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: 0.2s ease;
+  color: #fff;
+}
+
+/* Botón Editar */
+.btn-edit {
+  background: #00ccff33;
+  border: 1px solid #00ccff;
+}
+
+.btn-edit:hover {
+  background: #00ccff55;
+  box-shadow: 0 0 10px #00ccff88;
+}
+
+/* Botón Borrar */
+.btn-delete {
+  background: #ff004433;
+  border: 1px solid #ff0044;
+}
+
+.btn-delete:hover {
+  background: #ff004455;
+  box-shadow: 0 0 10px #ff004488;
+}
+
+table a{
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+}

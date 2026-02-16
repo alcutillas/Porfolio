@@ -1,9 +1,9 @@
 <?php
-function generarSelect($conexion, $tabla, $columna, $nombreSelector, $mostrarTodas = true) {
+function generarSelect($conexion, $tabla, $columna, $nombreSelector, $destino = "", $mostrarTodas = true) {
 
     $seleccionado = $_GET[$nombreSelector] ?? 'todas';
 
-    $html = "<form action='' method='get'>
+    $html = "<form action='$destino' method='get'>
              <select name='$nombreSelector' onchange=\"this.form.submit()\">\n";
 
     if ($mostrarTodas) {
@@ -52,24 +52,58 @@ function generarSelect($conexion, $tabla, $columna, $nombreSelector, $mostrarTod
            return $preparada ->fetchAll()[0]["nombre"];
     }
 
-    function mostrarProyectos($conexion, $idCategoria = "todas"){
+    function proyectos($conexion, $idCategoria = "todas"){
         $consulta = "SELECT * from proyectos";
         if($idCategoria != "todas")
             $consulta .= " where categoria_id = \"" . $idCategoria . "\"";
         $preparada = $conexion ->prepare($consulta);
-        $preparada ->execute();
-        
-    $respuesta = "";
-
-        $proyectos = $preparada->fetchAll();
-        foreach($proyectos as $p){
-            $respuesta .= '<div class="proyecto">
-            <h3>' . $p["titulo"] . '</h3>
-            <h4>' . nombreCategoria($conexion,$p["categoria_id"]) . '</h4>
-            <img src = static/img/proyectos/' . $p["imagen"] . '>
-            <p>' . $p["descripcion"] . '</p>
-            </div>';
+        try{
+            $preparada ->execute();
+        }catch(Exception $e){
+            echo "Error en la consulta de proyectos";
         }
-        return "<div class=\"proyectos\">" .$respuesta. "</div>";
+        
+        
+        return $preparada->fetchAll();
+        
+    }
+
+    function borrarProyecto($conexion, $id){
+        $consulta = "DELETE FROM proyectos where id = $id";
+        $preparada = $conexion ->prepare($consulta);
+
+        try{
+            $preparada ->execute();
+        }catch(Exception $e){
+            echo "Error en la consulta de borrar";
+        }
+    }
+
+    function tecnologiasProyecto($conexion, $idproyecto){
+        $consulta = "SELECT tecnologia_id FROM proyecto_tecnologia where proyecto_id = $idproyecto";
+        $preparada = $conexion ->prepare($consulta);
+
+        try{
+            $preparada ->execute();
+        }catch(Exception $e){
+            echo "Error en la consulta de id";
+        }
+        $consulta = 'SELECT * FROM tecnologias where id = ' . $preparada->fetch()["tecnologia_id"];
+        $preparada = $conexion ->prepare($consulta);
+
+        try{
+            $preparada ->execute();
+        }catch(Exception $e){
+            echo "Error en la consulta de tecnologia";
+        }
+        
+
+        $respuesta = "";
+        foreach($preparada->fetchAll() as $t){
+            var_dump($t);
+            $respuesta .= $t["nombre"] . "| ";
+        }
+       
+        return $respuesta;
     }
 ?>

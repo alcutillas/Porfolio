@@ -1,8 +1,5 @@
 <?php
-if(isset($_GET["categorias"])){
-    $cat = $_GET["categorias"];
-    header('Location:proyectos.php?categorias=' . $cat);
-}
+
     
 setcookie("visitas", 0, time()+3600*24*30);
 
