@@ -16,11 +16,12 @@ require_once("templates/header.php");
             <h3>' . $p["titulo"] . '</h3>
             <h4>' . nombreCategoria($conexion,$p["categoria_id"]) . '</h4>
             <img src = static/img/proyectos/' . $p["imagen"] . '>
+            <p>' . tecnologiasProyecto($conexion,$p["id"]) . '</p>
             <p>' . $p["descripcion"] . '</p>
             </div>';
         }
         ?>
-        <div class="proyectos"><?= $respuesta ?></div>;
+        <div class="proyectos"><?= $respuesta ?></div>
         
 </main>
 
