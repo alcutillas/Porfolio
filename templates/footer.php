@@ -14,8 +14,9 @@
             $resultado->execute();
 
             foreach ($resultado->fetchAll(PDO::FETCH_ASSOC) as $fila) {
-            echo $fila['nombre'] . '|';
+            echo $fila['nombre'] . " ";
             }
+            
         ?>
         </p>
         <p>2025 Mi Porfolio</p>

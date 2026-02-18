@@ -1,4 +1,5 @@
 <?php
+
 function generarSelect($conexion, $tabla, $columna, $nombreSelector, $destino = "", $mostrarTodas = true) {
 
     $seleccionado = $_GET[$nombreSelector] ?? 'todas';
@@ -68,42 +69,22 @@ function generarSelect($conexion, $tabla, $columna, $nombreSelector, $destino = 
         
     }
 
-    function borrarProyecto($conexion, $id){
-        $consulta = "DELETE FROM proyectos where id = $id";
-        $preparada = $conexion ->prepare($consulta);
+    
 
-        try{
-            $preparada ->execute();
-        }catch(Exception $e){
-            echo "Error en la consulta de borrar";
-        }
-    }
 
-    function tecnologiasProyecto($conexion, $idproyecto){
-        $consulta = "SELECT tecnologia_id FROM proyecto_tecnologia where proyecto_id = $idproyecto";
-        $preparada = $conexion ->prepare($consulta);
+function tecnologiasProyecto($conexion, $proyecto_id) {
 
-        try{
-            $preparada ->execute();
-        }catch(Exception $e){
-            echo "Error en la consulta de id";
-        }
-        $consulta = 'SELECT * FROM tecnologias where id = ' . $preparada->fetch()["tecnologia_id"];
-        $preparada = $conexion ->prepare($consulta);
+    $sql = "SELECT t.nombre 
+            FROM tecnologias t
+            INNER JOIN proyecto_tecnologia pt 
+                ON t.id = pt.tecnologia_id
+            WHERE pt.proyecto_id = ?";
 
-        try{
-            $preparada ->execute();
-        }catch(Exception $e){
-            echo "Error en la consulta de tecnologia";
-        }
-        
+    $stmt = $conexion->prepare($sql);
+    $stmt->execute([$proyecto_id]);
 
-        $respuesta = "";
-        foreach($preparada->fetchAll() as $t){
-            var_dump($t);
-            $respuesta .= $t["nombre"] . "| ";
-        }
-       
-        return $respuesta;
-    }
+    return implode(", ", $stmt->fetchAll(PDO::FETCH_COLUMN));
+}
+
+
 ?>

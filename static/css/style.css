@@ -23,7 +23,9 @@ header {
 }
 
 main{
-    margin-top: 100px;
+    margin-top: 70px;
+    padding: 30px;
+    min-height: 73vh;
 }
 
 /* Título */
@@ -52,6 +54,7 @@ header ul a {
     transition: color 0.3s ease;
 }
 
+
 header ul a:hover {
     color: #00bcd4;
 }
@@ -62,7 +65,7 @@ header ul li {
 }
 
 /* Select de categorías */
-#categorias select {
+select {
     padding: 0.3rem 0.5rem;
     border-radius: 4px;
     border: none;
@@ -71,7 +74,7 @@ header ul li {
     font-size: 0.9rem;
 }
 
-#categorias select:focus {
+select:focus {
     outline: 2px solid #00bcd4;
 }
 
@@ -139,8 +142,6 @@ footer p:last-child {
 
 /* CONTACTO */
 .contacto {
-    min-height: 70vh;
-    padding: 3rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -216,12 +217,8 @@ footer p:last-child {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 33px;
 }
 
-#main-proyectos{
-    min-height: 74vh;
-}
 
 /* Contenedor general */
 .proyectos {
@@ -338,6 +335,7 @@ footer p:last-child {
 .btn-edit {
   background: #00ccff33;
   border: 1px solid #00ccff;
+    padding: 5px;
 }
 
 .btn-edit:hover {
@@ -349,6 +347,7 @@ footer p:last-child {
 .btn-delete {
   background: #ff004433;
   border: 1px solid #ff0044;
+    padding: 5px;
 }
 
 .btn-delete:hover {
@@ -356,8 +355,135 @@ footer p:last-child {
   box-shadow: 0 0 10px #ff004488;
 }
 
-table a{
-    text-decoration: none;
-    color: white;
+.btn-save {
+  background: #48ff3033;
+  border: 1px solid #2c5823;
     padding: 5px;
+}
+
+.btn-save:hover {
+  background: #15ff0055;
+  box-shadow: 0 0 10px #1e751288;
+}
+
+.table-modern a{
+    text-decoration: none;
+}
+
+.logout {
+    display: inline-block;
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #ff3b3b, #b30000);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+}
+
+.logout:hover {
+    background: linear-gradient(135deg, #ff1a1a, #800000);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 0, 0, 0.4);
+}
+
+.logout:active {
+    transform: scale(0.97);
+}
+
+/*Editar*/
+
+/* CONTENEDOR CENTRADO */
+#editar form {
+    background-color: #1a1a1a;
+    max-width: 750px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
+/* TÍTULO */
+#editar h1 {
+    text-align: center;
+    color: #00bcd4;
+    margin-bottom: 30px;
+}
+
+/* LABELS */
+#editar label {
+    display: block;
+    margin-bottom: 6px;
+    margin-top: 18px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* INPUTS */
+#editar input[type="text"],
+#editar input[type="file"],
+#editar textarea,
+#editar select {
+    width: 100%;
+    padding: 10px;
+    background-color: #0d0d0d;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+/* FOCUS EFECTO TURQUESA */
+#editar input:focus,
+#editar textarea:focus,
+#editar select:focus {
+    border-color: #00bcd4;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.3);
+}
+
+/* TEXTAREA */
+#editar textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+/* CONTENEDOR BOTONES */
+#editar .botones {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+}
+
+/* BOTÓN CANCELAR */
+#editar .btn-edit {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#editar .btn-edit:hover {
+    background-color: #444;
+}
+
+/* BOTÓN GUARDAR */
+#editar .btn-save {
+    background-color: #00bcd4;
+    color: #0d0d0d;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#editar .btn-save:hover {
+    background-color: #00a5bb;
 }

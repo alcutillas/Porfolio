@@ -12,7 +12,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto Entorno Servidor</title>
-    <link rel="stylesheet" href="/porfolio/static/css/stylo.css">
+    <link rel="stylesheet" href="/porfolio/static/css/style.css">
 </head>
 
 <body>
@@ -41,7 +41,7 @@ session_start();
                 <?php
                 }
             ?>
-            <a href="/porfolio/logout.php"><li>Cerrar Sesion</li></a>
+            <a class="logout" href="/porfolio/logout.php"><li>Cerrar Sesion</li></a>
             
             <?php
             }
