@@ -487,3 +487,59 @@ footer p:last-child {
 #editar .btn-save:hover {
     background-color: #00a5bb;
 }
+
+/*Buscador proyectos*/
+/* Contenedor del formulario */
+.form-buscador {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+/* Input */
+.input-buscador {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px solid #1e1e1e;
+    background-color: #2b2b2b;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Placeholder */
+.input-buscador::placeholder {
+    color: #aaa;
+}
+
+/* Focus efecto glow turquesa */
+.input-buscador:focus {
+    border-color: #00d4ff;
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+}
+
+/* Botón */
+.btn-buscar {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover botón */
+.btn-buscar:hover {
+    background: linear-gradient(135deg, #00b8e6, #007a99);
+    transform: translateY(-2px);
+}
+
+/* Click efecto */
+.btn-buscar:active {
+    transform: scale(0.95);
+}

@@ -53,7 +53,7 @@ function generarSelect($conexion, $tabla, $columna, $nombreSelector, $destino = 
            return $preparada ->fetchAll()[0]["nombre"];
     }
 
-    function proyectos($conexion, $idCategoria = "todas"){
+    /*function proyectos($conexion, $idCategoria = "todas"){
         $consulta = "SELECT * from proyectos";
         if($idCategoria != "todas")
             $consulta .= " where categoria_id = \"" . $idCategoria . "\"";
@@ -67,6 +67,35 @@ function generarSelect($conexion, $tabla, $columna, $nombreSelector, $destino = 
         
         return $preparada->fetchAll();
         
+    }*/
+
+    function proyectos($conexion, $idCategoria = "todas", $busqueda = null){
+
+        $consulta = "SELECT * FROM proyectos WHERE 1=1";
+        $parametros = [];
+    
+        // Filtro por categoría
+        if($idCategoria != "todas"){
+            $consulta .= " AND categoria_id = :categoria";
+            $parametros[':categoria'] = $idCategoria;
+        }
+    
+        // Filtro por buscador (titulo o descripcion)
+        if(!empty(trim($busqueda))){
+            $consulta .= " AND (titulo LIKE :busqueda OR descripcion LIKE :busqueda)";
+            $parametros[':busqueda'] = "%" . trim($busqueda) . "%";
+        }
+    
+        $preparada = $conexion->prepare($consulta);
+    
+        try{
+            $preparada->execute($parametros);
+        }catch(Exception $e){
+            echo "Error en la consulta de proyectos";
+            return [];
+        }
+    
+        return $preparada->fetchAll(PDO::FETCH_ASSOC);
     }
 
     
